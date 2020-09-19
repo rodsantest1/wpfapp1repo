@@ -1,78 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+﻿using ReactiveUI;
+using System;
+using System.Reactive.Disposables;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Text.Json;
-using System.Configuration;
 
 namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
     {
         public MainWindow()
         {
             InitializeComponent();
-            var result = SimpleMathService("3", "2");
-            GetWeather();
-        }
-        private void GetWeather()
-        {
-            using (var client = new WebClient())
+
+            ViewModel = new MainWindowViewModel();
+
+            this.WhenActivated(disposables =>
             {
-                try
-                {
-                    var jsonString = client.DownloadString($"{ConfigurationManager.AppSettings["BaseUrl"]}/weatherforecast");
+                Input1.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                Input2.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
-                    var weatherForecast = JsonSerializer.Deserialize<IEnumerable<WeatherForecast>>(jsonString);
-
-                    GridView1.ItemsSource = weatherForecast;
-                }
-                catch (Exception)
-                {
-
-                }
-            }
+                this.Bind(ViewModel,
+                    vm => vm.Input1,
+                    v => v.Input1.Text)
+                    .DisposeWith(disposables);
+                this.Bind(ViewModel,
+                    vm => vm.Input2,
+                    v => v.Input2.Text)
+                    .DisposeWith(disposables);
+                this.OneWayBind(ViewModel,
+                    vm => vm.Sum,
+                    v => v.Sum.Text)
+                    .DisposeWith(disposables);
+            });
         }
-
-        private int SimpleMathService(string input1, string input2)
-        {
-            using (var client = new WebClient())
-            {
-                try
-                {
-                    var jsonString = client.DownloadString($"{ConfigurationManager.AppSettings["BaseUrl"]}/simplemath/{input1}/{input2}");
-
-                    var sum = JsonSerializer.Deserialize<int>(jsonString);
-
-                    return sum;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-        }
-    }
-
-    public class WeatherForecast
-    {
-        public DateTime date { get; set; }
-        public int temperatureC { get; set; }
-        public int temperatureF { get; set; }
-        public string summary { get; set; }
     }
 }
