@@ -8,7 +8,11 @@ Unit Test Project - .Net Core 3.1
 ![AddImage](Image1.PNG)
 
 #### Running solution:  
-Select **Multiple startup projects** option in solution properties.  
+1. Select **Multiple startup projects** option in solution properties.  
+2. Select Start option for API project  
+3. Select Start option for WPF project  
+4. Optional: Select Start option for ConsoleApp1 project 
+5. Click Apply and start the app
 
 #### Running Appium Test  
 Prerequisites: 
