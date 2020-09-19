@@ -3,4 +3,26 @@
 9/18/20  
 Web API - .Net Core 3.1  
 WPF App - .Net Framework 4.8  
-Unit Test Project - .Net Core 3.1
+Unit Test Project - .Net Core 3.1  
+
+![AddImage](Image1.PNG)
+
+#### Running solution:  
+Select **Multiple startup projects** option in solution properties.  
+
+#### Running Appium Test  
+Prerequisites: 
+1. Test machine has to be in **Developer Mode**
+2. Install **WinAppDriver**
+3. Visit [site](https://github.com/microsoft/WinAppDriver) for more details  
+
+Start the API:
+1. Open command line in WebApplication1 bin/Debug/netcoreapp3.1 folder
+2. Type WebApplication1.exe and press enter  
+
+Run the test:  
+1. Right-click in test method and select Debug Test or Run Test
+
+
+
+
