@@ -26,6 +26,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            var result = SimpleMathService("3", "2");
             GetWeather();
         }
         private void GetWeather()
@@ -43,6 +44,25 @@ namespace WpfApp1
                 catch (Exception)
                 {
 
+                }
+            }
+        }
+
+        private int SimpleMathService(string input1, string input2)
+        {
+            using (var client = new WebClient())
+            {
+                try
+                {
+                    var jsonString = client.DownloadString($"{ConfigurationManager.AppSettings["BaseUrl"]}/simplemath/{input1}/{input2}");
+
+                    var sum = JsonSerializer.Deserialize<int>(jsonString);
+
+                    return sum;
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
             }
         }
