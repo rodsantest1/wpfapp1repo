@@ -5,6 +5,9 @@ Web API - .Net Core 3.1
 WPF App - .Net Framework 4.8  
 Unit Test Project - .Net Core 3.1  
 
+### Description
+Adds 2 numbers together without needing to click an Add button
+
 ![AddImage](Image1.PNG)
 
 #### Running solution:  
