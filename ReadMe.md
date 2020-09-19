@@ -6,7 +6,7 @@ WPF App - .Net Framework 4.8
 Unit Test Project - .Net Core 3.1  
 
 ### Description
-Adds 2 numbers together without needing to click an Add button
+Adds 2 numbers together without needing to click an Add button. This simple app calls an add service available through an API.
 
 ![AddImage](Image1.PNG)
 
