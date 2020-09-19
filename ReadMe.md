@@ -1,4 +1,4 @@
-# Simple WPF and Web API solution (with ReactiveUI)  
+# Simple WPF and Web API solution <br/>(with ReactiveUI)  
 
 9/18/20  
 Web API - .Net Core 3.1  
