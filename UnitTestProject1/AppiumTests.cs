@@ -29,16 +29,18 @@ namespace UnitTestProject1
             string actual = "";
             //act
             //Make sure API is running somewhere
-            var input1 = FindByAny(session.FindElementByAccessibilityId, "Input1");
+            var input1 = FindById("Input1");
             input1.SendKeys("3");
-            var input2 = FindByAny(session.FindElementByAccessibilityId, "Input2");
+            var input2 = FindById("Input2");
             input2.SendKeys("1");
-            actual = FindByAny(session.FindElementByAccessibilityId, "Sum").Text;
+            actual = FindById("Sum").Text;
             //assert
             Assert.AreEqual(expected, actual);
         }
 
-        public T FindByAny<T>(Func<string, T> f, string id)
+        public WindowsElement FindById(string id) => FindByAny(() => session.FindElementByAccessibilityId(id));
+
+        public T FindByAny<T>(Func<T> f)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -47,7 +49,7 @@ namespace UnitTestProject1
             {
                 try
                 {
-                    var x = f(id);
+                    var x = f();
 
                     return x;
                 }
