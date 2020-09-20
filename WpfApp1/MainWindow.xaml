@@ -7,21 +7,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:reactiveui="http://reactiveui.net" 
     xmlns:WpfApp1="clr-namespace:WpfApp1"
-    mc:Ignorable="d" FontSize="48"
+    mc:Ignorable="d" FontSize="24"
     Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-            <TextBox x:Name="Input1" Width="90" Margin="20 0 0 0" TextAlignment="Center"/>
+        <StackPanel x:Name="StackPanel1" Orientation="Horizontal" Margin="0 20 0 20">
+            <TextBox x:Name="Input1" Width="90" Margin="20 0 0 0" TextAlignment="Center" FontSize="36"/>
             <TextBlock Text="+" Margin="20 0 0 0" />
             <TextBox x:Name="Input2" Width="90" Margin="20 0 0 0" TextAlignment="Center"/>
             <TextBlock Text="=" Margin="20 0 0 0" />
             <TextBox x:Name="Sum" Width="90" Margin="20 0 0 0" IsReadOnly="True" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel x:Name="StackPanel2" Grid.Row="2" Margin="0 20 0 20">
+            <ListBox x:Name="ListBox1" BorderThickness="1" Padding="5">
+                <ListBoxItem x:Name="ListBoxItem2" BorderThickness="1" Padding="5">
+                    <TextBlock x:Name="TextBlock1" Text="Hello World" />
+                </ListBoxItem>
+            </ListBox>
         </StackPanel>
     </Grid>
 </reactiveui:ReactiveWindow>

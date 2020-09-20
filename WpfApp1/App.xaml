@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:WpfApp1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="48"/>
+        </Style>
     </Application.Resources>
 </Application>
