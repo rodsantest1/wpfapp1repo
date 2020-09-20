@@ -90,5 +90,32 @@ namespace UnitTestProject1
             runningProcess?.Kill();
         }
 
+        public static WindowsElement FindById(string id) => FindByAny(() => session.FindElementByAccessibilityId(id));
+        public static WindowsElement FindByName(string id) => FindByAny(() => session.FindElementByName(id));
+        public static WindowsElement FindByClassName(string id) => FindByAny(() => session.FindElementByClassName(id));
+        public static IEnumerable<AppiumWebElement> FindByClassName(string id, AppiumWebElement ele) => FindByAny(() => ele.FindElementsByClassName(id));
+
+        public static T FindByAny<T>(Func<T> f)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            do
+            {
+                try
+                {
+                    var x = f();
+
+                    return x;
+                }
+                catch (Exception)
+                {
+                    System.Threading.Tasks.Task.Delay(50);
+
+                    if (sw.Elapsed.TotalSeconds > 10)
+                        throw new Exception("Rodney Santiago - Element not found error.");
+                }
+            } while (true);
+        }
     }
 }
