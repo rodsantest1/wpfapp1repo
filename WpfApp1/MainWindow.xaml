@@ -19,7 +19,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <StackPanel x:Name="StackPanel1" Orientation="Horizontal" Margin="0 20 0 20">
-            <TextBox x:Name="Input1" Width="90" Margin="20 0 0 0" TextAlignment="Center" FontSize="36"/>
+            <TextBox x:Name="Input1" Width="90" Margin="20 0 0 0" TextAlignment="Center"/>
             <TextBlock Text="+" Margin="20 0 0 0" />
             <TextBox x:Name="Input2" Width="90" Margin="20 0 0 0" TextAlignment="Center"/>
             <TextBlock Text="=" Margin="20 0 0 0" />

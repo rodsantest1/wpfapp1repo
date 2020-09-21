@@ -11,11 +11,18 @@ Adds 2 numbers together without needing to click an Add button. This simple app 
 ![AddImage](Image1.PNG)
 
 #### Running solution:  
-1. Select **Multiple startup projects** option in solution properties.  
-2. Select Start option for API project  
-3. Select Start option for WPF project  
-4. Optional: Select Start option for ConsoleApp1 project 
-5. Click Apply and start the app
+1. Select WebApplication1 as Startup project
+2. Change the startup web server from IISExpress to WebApplication1
+3. If you get error like following, restart Visual Studio
+
+A numeric comparison was attempted on "$(MsBuildMajorVersion)" that evaluates to "" instead of a number, in condition "($(MsBuildMajorVersion) < 16)"  
+
+
+4. Select **Multiple startup projects** option in solution properties.  
+5. Select Start option for API project  
+6. Select Start option for WPF project  
+7. Optional: Select Start option for ConsoleApp1 project 
+8. Click Apply and start the app
 
 #### Running Appium Test  
 Prerequisites: 

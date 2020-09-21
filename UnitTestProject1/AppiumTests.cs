@@ -24,7 +24,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void Add2Numbers_test()
         {
             //arrange
             string expected = "4";
@@ -40,8 +40,12 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// This demonstrates testing nested objects like finding something in
+        /// a listbox
+        /// </summary>
         [TestMethod]
-        public void TestMethod2()
+        public void FindInListBox_test()
         {
             //arrange
             bool expected = true;
