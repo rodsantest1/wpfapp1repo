@@ -21,8 +21,7 @@ A numeric comparison was attempted on "$(MsBuildMajorVersion)" that evaluates to
 4. Select **Multiple startup projects** option in solution properties.  
 5. Select Start option for API project  
 6. Select Start option for WPF project  
-7. Optional: Select Start option for ConsoleApp1 project 
-8. Click Apply and start the app
+7. Click Apply and start the app
 
 #### Running Appium Test  
 Prerequisites: 
