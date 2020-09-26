@@ -105,9 +105,9 @@ namespace UnitTestProject1
             {
                 try
                 {
+                    if (f.Method.Name.Contains("FindAll")) Thread.Sleep(250);
+                    
                     var x = f();
-
-                    if (f.Method.Name.Contains("FindAllByClassName")) Thread.Sleep(250);
 
                     return x;
                 }
