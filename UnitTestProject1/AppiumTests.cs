@@ -53,8 +53,8 @@ namespace UnitTestProject1
             //act
             //Make sure API is running somewhere
             var listBox1 = FindById("ListBox1");
-            var listBoxItem1 = FindByClassName("ListBoxItem", listBox1).FirstOrDefault();
-            var x = FindByClassName("TextBlock", listBoxItem1).ToList();
+            var listBoxItem1 = FindAllByClassName("ListBoxItem", listBox1).FirstOrDefault();
+            var x = FindAllByClassName("TextBlock", listBoxItem1).ToList();
             actual = x.Exists(x => x.Text.Contains("Hello World"));
             //assert
             Assert.AreEqual(expected, actual);

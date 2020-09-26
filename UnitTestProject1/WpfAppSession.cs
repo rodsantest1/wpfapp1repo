@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Appium;
 using System.Diagnostics;
 using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
 namespace UnitTestProject1
 {
@@ -93,7 +94,7 @@ namespace UnitTestProject1
         public static WindowsElement FindById(string id) => FindByAny(() => session.FindElementByAccessibilityId(id));
         public static WindowsElement FindByName(string id) => FindByAny(() => session.FindElementByName(id));
         public static WindowsElement FindByClassName(string id) => FindByAny(() => session.FindElementByClassName(id));
-        public static IEnumerable<AppiumWebElement> FindByClassName(string id, AppiumWebElement ele) => FindByAny(() => ele.FindElementsByClassName(id));
+        public static IEnumerable<AppiumWebElement> FindAllByClassName(string id, AppiumWebElement ele) => FindByAny(() => ele.FindElementsByClassName(id));
 
         public static T FindByAny<T>(Func<T> f)
         {
@@ -104,6 +105,8 @@ namespace UnitTestProject1
             {
                 try
                 {
+                    if (f.Method.Name.Contains("FindAllByClassName")) Thread.Sleep(5000);
+
                     var x = f();
 
                     return x;
