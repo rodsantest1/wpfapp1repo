@@ -26,7 +26,7 @@ namespace WpfApp1
 
         private async Task<string> AddNumbersHandler()
         {
-            var sum = SimpleMathService(Input1, Input2);
+            var sum = await Task.Run(()=>SimpleMathService(Input1, Input2));
 
             return sum > 0 ? $"{sum}" : "";
         }
