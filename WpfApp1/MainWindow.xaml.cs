@@ -22,6 +22,11 @@ namespace WpfApp1
                 Input1.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
                 Input2.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
+                this.OneWayBind(ViewModel,
+                    vm => vm.ShowBusy,
+                    v => v.BusyTextBlock.Visibility)
+                    .DisposeWith(disposables);
+
                 this.Bind(ViewModel,
                     vm => vm.Input1,
                     v => v.Input1.Text)

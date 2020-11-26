@@ -24,9 +24,10 @@
             <TextBox x:Name="Input2" Width="90" Margin="20 0 0 0" TextAlignment="Center"/>
             <TextBlock Text="=" Margin="20 0 0 0" />
             <TextBox x:Name="Sum" Width="90" Margin="20 0 0 0" IsReadOnly="True" TextAlignment="Center"/>
+            <TextBlock x:Name="BusyTextBlock" Text="Busy..." Visibility="Hidden"  Margin="20 0 0 0" VerticalAlignment="Center"/>
         </StackPanel>
         <StackPanel x:Name="StackPanel2" Grid.Row="2" Margin="0 20 0 20">
-            <ListBox x:Name="ListBox1" BorderThickness="1" Padding="5">
+            <ListBox x:Name="ListBox1" BorderThickness="1" Padding="5" Width="300">
                 <ListBoxItem x:Name="ListBoxItem2" BorderThickness="1" Padding="5">
                     <TextBlock x:Name="TextBlock1" Text="Hello World" />
                 </ListBoxItem>
