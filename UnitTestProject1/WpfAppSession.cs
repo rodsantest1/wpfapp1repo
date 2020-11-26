@@ -34,7 +34,7 @@ namespace UnitTestProject1
 
             var app = Path.Combine(
                 Directory.GetCurrentDirectory(),
-                $@"..\..\..\..\WpfApp1\bin\{configName}", "WpfApp1.exe");
+                $@"..\..\..\..\WpfApp1\bin\{configName}", "WpfApp122.exe");
 
             if (session == null)
             {

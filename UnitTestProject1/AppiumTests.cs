@@ -35,7 +35,17 @@ namespace UnitTestProject1
             input1.SendKeys("3");
             var input2 = FindById("Input2");
             input2.SendKeys("1");
-            actual = FindById("Sum").Text;
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            do
+            {
+                actual = FindById("Sum").Text;
+
+                if (actual != "4" && sw.Elapsed.TotalSeconds < 10) continue; else break;
+
+            } while (true);
+
             //assert
             Assert.AreEqual(expected, actual);
         }
