@@ -7,6 +7,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 namespace WpfApp1
 {
@@ -19,20 +20,27 @@ namespace WpfApp1
             AddNumbers.ToPropertyEx(this, y => y.Sum);
             //AddNumbers.ThrownExceptions.Subscribe(ex => this.Log().Warn("Error!", ex));
 
-            this.WhenAnyValue(x => x.Input1, x => x.Input2)
+            this.WhenAnyValue(
+                x => x.Input1, x => x.Input2,
+                (input1, input2) =>
+                    !string.IsNullOrWhiteSpace(input1) &&
+                    !string.IsNullOrWhiteSpace(input2)
+                )
                 .Select(_ => Unit.Default)
                 .InvokeCommand(AddNumbers);
         }
 
         private async Task<string> AddNumbersHandler()
         {
-            var sum = SimpleMathService(Input1, Input2);
+            var sum = await Task.Run(()=> SimpleMathService(Input1, Input2));
 
             return sum > 0 ? $"{sum}" : "";
         }
 
         private int SimpleMathService(string input1, string input2)
         {
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+
             if (string.IsNullOrWhiteSpace(input1) || string.IsNullOrWhiteSpace(input2)) return default;
 
             using (var client = new WebClient())
