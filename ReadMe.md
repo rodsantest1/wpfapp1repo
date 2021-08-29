@@ -36,6 +36,7 @@ Start the API:
 Run the test:  
 1. Right-click in test method and select Debug Test or Run Test
 
-
+8/28/21 App Crash
+If can't connect to API the app crashes.
 
 
