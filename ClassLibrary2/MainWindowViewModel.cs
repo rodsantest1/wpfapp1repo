@@ -9,7 +9,7 @@ using System.Reactive.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading.Tasks;
-namespace WpfApp1
+namespace ClassLibrary2
 {
     public class MainWindowViewModel : ReactiveObject
     {
@@ -17,7 +17,7 @@ namespace WpfApp1
         public ReactiveCommand<Unit, string> AddNumbers { get; }
         public MainWindowViewModel()
         {
-            AddNumbers = ReactiveCommand.CreateFromObservable(AddNumbersHandler);
+            AddNumbers = ReactiveCommand.CreateFromTask(AddNumbersHandler);
             AddNumbers.ToPropertyEx(this, y => y.Sum);
             //AddNumbers.ThrownExceptions.Subscribe(ex => this.Log().Warn("Error!", ex));
 
@@ -32,16 +32,13 @@ namespace WpfApp1
                 .InvokeCommand(AddNumbers);
         }
 
-        private IObservable<string> AddNumbersHandler()
+        private async Task<string> AddNumbersHandler()
         {
-            return Observable.StartAsync(async () =>
-            {
-                var sum = await Task.Run(() => SimpleMathService(Input1, Input2));
+            await Task.Delay(3000);
 
-                return sum > 0 ? $"{sum}" : "";
+            var sum = await Task.Run(() => SimpleMathService(Input1, Input2));
 
-            }).Delay(TimeSpan.FromSeconds(5));
-
+            return sum > 0 ? $"{sum}" : "";
         }
 
         private int SimpleMathService(string input1, string input2)
